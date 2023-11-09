@@ -26,7 +26,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           # list of Docker images to use as base name for tags
-          images: devlaunchers/strapi # list of Docker images to use as base name for tags
+          images: devlaunchers/onboardingbot # list of Docker images to use as base name for tags
           # generate Docker tags based on the following events/attributes
           # flux image update policy sorts by timestamp
           tags: |
