@@ -1,14 +1,13 @@
 python-dotenv
 tiktoken
 flask-cors
-openai
+openai==0.28.1
 Flask
 pypdf
-langchain
+langchain==0.0.331
 torch
 accelerate
 bitsandbytes
 transformers
 sentence_transformers
 faiss_cpu
-chainlit
