@@ -4,6 +4,6 @@ namespace: onboarding-bot-staging
 bases:
 - ./kservice.yaml
 images:
-- name: devlaunchers/onboarding-bot
-  newName: devlaunchers/onboarding-bot
+- name: devlaunchers/onboardingbot
+  newName: devlaunchers/onboardingbot
   newTag: f742ab4-202311191818 # {"$imagepolicy": "onboarding-bot-staging:onboarding-bot:tag"}
