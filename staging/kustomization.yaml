@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: onboarding-bot-staging
+bases:
+- ./kservice.yaml
+images:
+- name: devlaunchers/onboarding-bot
+  newName: devlaunchers/onboarding-bot
+  newTag: f742ab4-202311191818 # {"$imagepolicy": "onboarding-bot-staging:onboarding-bot:tag"}

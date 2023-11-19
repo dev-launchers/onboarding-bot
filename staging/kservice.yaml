@@ -1,0 +1,20 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  namespace: onboarding-bot-staging
+  name: onboarding-bot
+spec:
+  template:
+    spec:
+      containers:
+      - name: strapi
+        image: devlaunchers/onboardingbot
+        ports:
+        # Flask server port
+        - containerPort: 5000
+        env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: onboarding-bot-secrets
+              key: openai-api-key
