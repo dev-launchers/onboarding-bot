@@ -7,11 +7,11 @@ from langchain.chat_models import ChatOpenAI
 
 import os
 from dotenv import load_dotenv
-
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 import time
 
+from flask_cors import CORS
 # Load environment variables from a .env file
 load_dotenv()
 
@@ -66,19 +66,27 @@ def qa_bot():
 chain = qa_bot()
 app = Flask(__name__)
 
+def is_curl_request():
+    user_agent = request.headers.get('User-Agent')
+    if(user_agent == 'curl'):
+        return True
+
 @app.route('/question', methods=['POST','GET'])
 def question():
-    chat_input = request.form.get("string")
-    response = chain(chat_input)
-    return (response["result"])
+        chat_input = request.form.get("string")
+        print(chat_input)
+        response = chain(chat_input)
+        return (response["result"])
 
 @app.route('/testQuestion', methods=['POST', 'GET'])
 def testQuestion():
     chat_input = request.form.get("string")
+    print(request.headers.get('Content-Type'))
     print(chat_input)
-    test = ("text: \"Test\"")
     time.sleep(3)
     return chat_input
+
+CORS(app)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
