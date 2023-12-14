@@ -9,6 +9,7 @@ import os
 from dotenv import load_dotenv
 
 from flask import Flask, request
+from flask_cors import CORS
 
 import time
 
@@ -79,6 +80,8 @@ def testQuestion():
     test = ("text: \"Test\"")
     time.sleep(3)
     return chat_input
+
+CORS(app)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
