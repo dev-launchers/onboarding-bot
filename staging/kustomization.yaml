@@ -6,4 +6,4 @@ bases:
 images:
 - name: devlaunchers/onboardingbot
   newName: devlaunchers/onboardingbot
-  newTag: fcb242d-202312142130 # {"$imagepolicy": "onboarding-bot-staging:onboarding-bot:tag"}
+  newTag: 0697570-202312142134 # {"$imagepolicy": "onboarding-bot-staging:onboarding-bot:tag"}
