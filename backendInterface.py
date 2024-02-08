@@ -4,6 +4,7 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
+from pyngrok import ngrok
 
 import os
 from dotenv import load_dotenv
@@ -64,8 +65,11 @@ def qa_bot():
 
     return qa
 #############################################
+port_no = 5000
 chain = qa_bot()
 app = Flask(__name__)
+ngrok.set_auth_token("2c4NiFymE4GpvffnPldjkokEpOm_67eW3NYnDRhs7rtAnCarg")
+public_url =  ngrok.connect(port_no).public_url
 
 @app.route('/question', methods=['POST','GET'])
 def question():
@@ -84,4 +88,4 @@ def testQuestion():
 CORS(app)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=port_no)
